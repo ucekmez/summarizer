@@ -101,6 +101,9 @@ class TRStemmer:
 
         return self.postProcess(stems, word)
 
+    def stems(self, words):
+        return list(map(lambda word: self.stem(word), words))
+
 
     def nominalVerbSuffixStripper(self, word, stems):
         """
