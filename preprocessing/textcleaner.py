@@ -2,7 +2,7 @@ import string
 import unicodedata
 import logging
 
-logger = logging.getLogger('summa.preprocessing.cleaner')
+logger = logging.getLogger('summarizer.preprocessing.cleaner')
 
 try:
     from pattern.en import tag
@@ -16,7 +16,7 @@ import re
 
 from .snowball import SnowballStemmer
 from .stopwords import get_stopwords_by_language
-from summa.syntactic_unit import SyntacticUnit
+from summarizer.syntactic_unit import SyntacticUnit
 
 
 # Utility functions adapted from Gensim v0.10.0:

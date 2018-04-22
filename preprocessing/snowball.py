@@ -3588,9 +3588,9 @@ class TurkishStemmer(_StandardStemmer):
     """
     The Turkish Snowball stemmer.
     """
-    import TRStemmer
 
     def stem(self, word):
+        from TRStemmer import TRStemmer
         """
         Stem an Turkish word and return the stemmed form.
 
