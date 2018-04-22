@@ -101,29 +101,46 @@ tivéssemos tivessem tiver tivermos tiverem terei terá teremos terão teria ter
 """
 
 swedish = """
-aderton adertonde adjö aldrig alla allas allt alltid alltså andra andras annan annat artonde artonn att av bakom 
+aderton adertonde adjö aldrig alla allas allt alltid alltså andra andras annan annat artonde artonn att av bakom
 bara behöva behövas behövde behövt beslut beslutat beslutit bland blev bli blir blivit bort borta bra bäst bättre
-båda bådas dag dagar dagarna dagen de del delen dem den denna deras dess dessa det detta dig din dina dit ditt 
-dock dom du där därför då e efter eftersom ej elfte eller elva emot en enkel enkelt enkla enligt ens er era ers 
-ert ett ettusen fanns fem femte femtio femtionde femton femtonde fick fin finnas finns fjorton fjortonde fjärde 
-fler flera flesta fram framför från fyra fyrtio fyrtionde få får fått följande för före förlåt förra första 
-genast genom gick gjorde gjort god goda godare godast gott gälla gäller gällt gärna gå går gått gör göra ha hade 
-haft han hans har heller hellre helst helt henne hennes hit hon honom hundra hundraen hundraett hur här hög höger 
-högre högst i ibland icke idag igen igår imorgon in inför inga ingen ingenting inget innan inne inom inte inuti 
-ja jag jo ju just jämfört kan kanske knappast kom komma kommer kommit kr kunde kunna kunnat kvar legat ligga 
-ligger lika likställd likställda lilla lite liten litet länge längre längst lätt lättare lättast långsam 
-långsammare långsammast långsamt långt låt man med mej mellan men mer mera mest mig min mina mindre minst mitt 
-mittemot mot mycket många måste möjlig möjligen möjligt möjligtvis ned nederst nedersta nedre nej ner ni nio 
-nionde nittio nittionde nitton nittonde nog noll nr nu nummer när nästa någon någonting något några nån nånting 
-nåt nödvändig nödvändiga nödvändigt nödvändigtvis och också ofta oftast olika olikt om oss på rakt redan rätt sa 
-sade sagt samma sedan senare senast sent sex sextio sextionde sexton sextonde sig sin sina sist sista siste sitt 
-sitta sju sjunde sjuttio sjuttionde sjutton sjuttonde själv sjätte ska skall skulle slutligen små smått snart som 
-stor stora stort större störst säga säger sämre sämst så sådan sådana sådant ta tack tar tidig tidigare tidigast 
-tidigt till tills tillsammans tio tionde tjugo tjugoen tjugoett tjugonde tjugotre tjugotvå tjungo tolfte tolv tre 
-tredje trettio trettionde tretton trettonde två tvåhundra under upp ur ursäkt ut utan utanför ute va vad var vara 
-varför varifrån varit varje varken vars varsågod vart vem vems verkligen vi vid vidare viktig viktigare viktigast 
-viktigt vilka vilkas vilken vilket vill väl vänster vänstra värre vår våra vårt än ännu är även åt åtminstone 
+båda bådas dag dagar dagarna dagen de del delen dem den denna deras dess dessa det detta dig din dina dit ditt
+dock dom du där därför då e efter eftersom ej elfte eller elva emot en enkel enkelt enkla enligt ens er era ers
+ert ett ettusen fanns fem femte femtio femtionde femton femtonde fick fin finnas finns fjorton fjortonde fjärde
+fler flera flesta fram framför från fyra fyrtio fyrtionde få får fått följande för före förlåt förra första
+genast genom gick gjorde gjort god goda godare godast gott gälla gäller gällt gärna gå går gått gör göra ha hade
+haft han hans har heller hellre helst helt henne hennes hit hon honom hundra hundraen hundraett hur här hög höger
+högre högst i ibland icke idag igen igår imorgon in inför inga ingen ingenting inget innan inne inom inte inuti
+ja jag jo ju just jämfört kan kanske knappast kom komma kommer kommit kr kunde kunna kunnat kvar legat ligga
+ligger lika likställd likställda lilla lite liten litet länge längre längst lätt lättare lättast långsam
+långsammare långsammast långsamt långt låt man med mej mellan men mer mera mest mig min mina mindre minst mitt
+mittemot mot mycket många måste möjlig möjligen möjligt möjligtvis ned nederst nedersta nedre nej ner ni nio
+nionde nittio nittionde nitton nittonde nog noll nr nu nummer när nästa någon någonting något några nån nånting
+nåt nödvändig nödvändiga nödvändigt nödvändigtvis och också ofta oftast olika olikt om oss på rakt redan rätt sa
+sade sagt samma sedan senare senast sent sex sextio sextionde sexton sextonde sig sin sina sist sista siste sitt
+sitta sju sjunde sjuttio sjuttionde sjutton sjuttonde själv sjätte ska skall skulle slutligen små smått snart som
+stor stora stort större störst säga säger sämre sämst så sådan sådana sådant ta tack tar tidig tidigare tidigast
+tidigt till tills tillsammans tio tionde tjugo tjugoen tjugoett tjugonde tjugotre tjugotvå tjungo tolfte tolv tre
+tredje trettio trettionde tretton trettonde två tvåhundra under upp ur ursäkt ut utan utanför ute va vad var vara
+varför varifrån varit varje varken vars varsågod vart vem vems verkligen vi vid vidare viktig viktigare viktigast
+viktigt vilka vilkas vilken vilket vill väl vänster vänstra värre vår våra vårt än ännu är även åt åtminstone
 åtta åttio åttionde åttonde över övermorgon överst övre
+"""
+
+turkish = """
+a acaba altı altmış ama ancak arada artık asla aslında aslında ayrıca az bana bazen bazı bazıları belki ben benden beni
+benim beri beş bile bilhassa bin bir biraz birçoğu birçok biri birisi birkaç birşey biz bizden bize bizi bizim böyle böylece
+bu buna bunda bundan bunlar bunları bunların bunu bunun burada bütün çoğu çoğunu çok çünkü da daha dahi dan de defa değil diğer
+diğeri diğerleri diye doksan dokuz dolayı dolayısıyla dört e edecek eden ederek edilecek ediliyor edilmesi ediyor eğer elbette
+elli en etmesi etti ettiği ettiğini fakat falan filan gene gereği gerek gibi göre hala halde halen hangi hangisi hani hatta
+hem henüz hep hepsi her herhangi herkes herkese herkesi herkesin hiç hiçbir hiçbiri i ı için içinde iki ile ilgili ise işte
+itibaren itibariyle kaç kadar karşın kendi kendilerine kendine kendini kendisi kendisine kendisini kez ki kim kime kimi kimin
+kimisi kimse kırk madem mi mı milyar milyon mu mü nasıl ne neden nedenle nerde nerede nereye neyse niçin nin nın niye nun nün
+o öbür olan olarak oldu olduğu olduğunu olduklarını olmadı olmadığı olmak olması olmayan olmaz olsa olsun olup olur olur olursa
+oluyor on ön ona önce ondan onlar onlara onlardan onları onların onu onun orada öte ötürü otuz öyle oysa pek rağmen sana sanki 
+sanki şayet şekilde sekiz seksen sen senden seni senin şey şeyden şeye şeyi şeyler şimdi siz siz sizden sizden size sizi sizi
+sizin sizin sonra şöyle şu şuna şunları şunu ta tabii tam tamam tamamen tarafından trilyon tüm tümü u ü üç un ün üzere var vardı
+ve veya ya yani yapacak yapılan yapılması yapıyor yapmak yaptı yaptığı yaptığını yaptıkları ye yedi yerine yetmiş yi yı yine yirmi
+yoksa yu yüz zaten zira
 """
 
 LANGUAGES = {
@@ -132,6 +149,7 @@ LANGUAGES = {
     "spanish": spanish,
     "portuguese": portuguese,
     "swedish": swedish,
+    "turkish": turkish,
 }
 
 
