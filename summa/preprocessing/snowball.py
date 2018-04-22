@@ -71,7 +71,7 @@ class SnowballStemmer():
 
     languages = ("danish", "dutch", "english", "finnish", "french", "german",
                  "hungarian", "italian", "norwegian", "porter", "portuguese",
-                 "romanian", "russian", "spanish", "swedish")
+                 "romanian", "russian", "spanish", "swedish", "turkish")
 
     def __init__(self, language):
         if language not in self.languages:
