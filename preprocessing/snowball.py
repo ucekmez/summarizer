@@ -3592,7 +3592,7 @@ class TurkishStemmer(_StandardStemmer):
     def stem(self, word):
         from TRStemmer import TRStemmer
         """
-        Stem an Turkish word and return the stemmed form.
+        Stem anTurkish word and return the stemmed form.
 
         :param word: The word that is stemmed.
         :type word: str or unicode

@@ -68,7 +68,7 @@ class TRStemmer:
         self.lastConsonantExceptions = kwargs.get("lastConsonantExceptions", DefaultSetHolder.DEFAULT_LAST_CONSONANT_EXCEPTIONS)
         self.averageStemSizeExceptions = kwargs.get("averageStemSizeExceptions", DefaultSetHolder.DEFAULT_AVERAGE_STEM_SIZE_EXCEPTIONS_FILE)
 
-    def stem(self, word):
+    def stem_single(self, word):
         """Finds the stem of a given word.
         Args:
         word (str): the word to stem
@@ -101,8 +101,11 @@ class TRStemmer:
 
         return self.postProcess(stems, word)
 
-    def stems(self, words):
-        return list(map(lambda word: self.stem(word), words))
+    def stem(self, word):
+        if type(word) == list:
+            return list(map(lambda w: self.stem_single(w), word))
+        else:
+            return self.stem_single(word)
 
 
     def nominalVerbSuffixStripper(self, word, stems):
