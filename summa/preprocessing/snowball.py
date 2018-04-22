@@ -30,7 +30,7 @@ class SnowballStemmer():
     The following languages are supported:
     Danish, Dutch, English, Finnish, French, German,
     Hungarian, Italian, Norwegian, Portuguese, Romanian, Russian,
-    Spanish and Swedish.
+    Spanish, Swedish and Turkish
 
     The algorithm for English is documented here:
 
@@ -3588,7 +3588,7 @@ class TurkishStemmer(_StandardStemmer):
     """
     The Turkish Snowball stemmer.
     """
-    from TurkishStemmer import TurkishStemmer
+    from TRStemmer import TRStemmer
 
     def stem(self, word):
         """
@@ -3600,7 +3600,7 @@ class TurkishStemmer(_StandardStemmer):
         :rtype: unicode
 
         """
-        stemmer = TurkishStemmer()
+        stemmer = TRStemmer()
         return stemmer.stem(word)
 
 
