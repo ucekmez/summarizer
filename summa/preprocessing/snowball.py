@@ -3505,7 +3505,6 @@ class SpanishStemmer(_StandardStemmer):
         return word
 
 
-
 class SwedishStemmer(_ScandinavianStemmer):
 
     """
@@ -3583,3 +3582,27 @@ class SwedishStemmer(_ScandinavianStemmer):
 
 
         return word
+
+
+class TurkishStemmer(_StandardStemmer):
+    """
+    The Turkish Snowball stemmer.
+    """
+    from TurkishStemmer import TurkishStemmer
+
+    def stem(self, word):
+        """
+        Stem an Turkish word and return the stemmed form.
+
+        :param word: The word that is stemmed.
+        :type word: str or unicode
+        :return: The stemmed form.
+        :rtype: unicode
+
+        """
+        stemmer = TurkishStemmer()
+        return stemmer.stem(word)
+
+
+
+#EOF
