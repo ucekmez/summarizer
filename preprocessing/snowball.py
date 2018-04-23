@@ -20,6 +20,7 @@ developed by Martin Porter.
 """
 
 from .porter import PorterStemmer
+from .TRStemmer import TRStemmer
 
 
 class SnowballStemmer():
@@ -3590,7 +3591,7 @@ class TurkishStemmer(_StandardStemmer):
     """
 
     def stem(self, word):
-        from TRStemmer import TRStemmer
+
         """
         Stem anTurkish word and return the stemmed form.
 

@@ -6,6 +6,8 @@ from .preprocessing.textcleaner import clean_text_by_word as _clean_text_by_word
 from .preprocessing.textcleaner import tokenize_by_word as _tokenize_by_word
 from .commons import build_graph as _build_graph
 from .commons import remove_unreachable_nodes as _remove_unreachable_nodes
+from .preprocessing.TRStemmer import TRStemmer
+from .preprocessing import stopwords
 
 WINDOW_SIZE = 2
 
@@ -214,7 +216,10 @@ def keywords(text, ratio=0.2, words=None, language="english", split=False, score
     # text.split() to keep numbers and punctuation marks, so separeted concepts are not combined
     combined_keywords = _get_combined_keywords(keywords, text.split())
 
-    return _format_results(keywords, combined_keywords, split, scores)
+    stemmer = TRStemmer()
+
+    keywords_unique = set(stemmer.stem(_format_results(keywords, combined_keywords, split, scores).split()))
+    return sorted(list(filter(lambda kw: len(kw) > 1 and kw not in stopwords.turkish.split(), keywords_unique)))
 
 
 def get_graph(text, language="english", deaccent=False):
