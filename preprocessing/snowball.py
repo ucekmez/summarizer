@@ -23,6 +23,23 @@ from .porter import PorterStemmer
 from .TRStemmer import TRStemmer
 
 
+import jpype, json
+# start JVM if not already started
+if jpype.isJVMStarted():
+    pass
+else:
+    jpype.startJVM("/usr/lib/jvm/java-8-oracle/jre/lib/amd64/server/libjvm.so",
+             "-Djava.class.path=/workspace/zemberek-tum-2.0.jar", "-ea")
+# Türkiye Türkçesine göre çözümlemek için gerekli sınıfı hazırla
+Tr = jpype.JClass("net.zemberek.tr.yapi.TurkiyeTurkcesi")
+# tr nesnesini oluştur
+tr = Tr()
+# Zemberek sınıfını yükle
+Zemberek = jpype.JClass("net.zemberek.erisim.Zemberek")
+# zemberek nesnesini oluştur
+zemberek = Zemberek(tr)
+
+
 class SnowballStemmer():
 
     """
@@ -3601,8 +3618,14 @@ class TurkishStemmer(_StandardStemmer):
         :rtype: unicode
 
         """
-        stemmer = TRStemmer()
-        return stemmer.stem(word)
+        #stemmer = TRStemmer()
+        #return stemmer.stem(word)
+
+        result = zemberek.kelimeCozumle(word)
+        return "{}".format(result[0]).split("Kok: ")[1].split(" ")[0]
+
+
+
 
 
 
