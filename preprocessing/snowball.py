@@ -3622,7 +3622,7 @@ class TurkishStemmer(_StandardStemmer):
         """
         if SOURCE == 'zemberek':
             result = zemberek.kelimeCozumle(word)
-            return "{}".format(result[0]).split("Kok: ")[1].split(" ")[0] if result else wordz
+            return "{}".format(result[0]).split("Kok: ")[1].split(" ")[0] if result else word
         else:
             stemmer = TRStemmer()
             return stemmer.stem(word)
