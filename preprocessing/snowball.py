@@ -19,7 +19,7 @@ developed by Martin Porter.
 
 """
 
-SOURCE = open("source.txt").read().replace("\n", "")
+SOURCE = open("/workspace/source.txt").read().replace("\n", "")
 
 from .porter import PorterStemmer
 from .TRStemmer import TRStemmer
