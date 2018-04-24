@@ -19,6 +19,8 @@ developed by Martin Porter.
 
 """
 
+SOURCE = open("source.txt").read().replace("\n", "")
+
 from .porter import PorterStemmer
 from .TRStemmer import TRStemmer
 
@@ -3618,11 +3620,12 @@ class TurkishStemmer(_StandardStemmer):
         :rtype: unicode
 
         """
-        #stemmer = TRStemmer()
-        #return stemmer.stem(word)
-
-        result = zemberek.kelimeCozumle(word)
-        return "{}".format(result[0]).split("Kok: ")[1].split(" ")[0]
+        if SOURCE == 'zemberek':
+            result = zemberek.kelimeCozumle(word)
+            return "{}".format(result[0]).split("Kok: ")[1].split(" ")[0] if result else wordz
+        else:
+            stemmer = TRStemmer()
+            return stemmer.stem(word)
 
 
 
