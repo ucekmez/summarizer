@@ -9,6 +9,23 @@ from .commons import remove_unreachable_nodes as _remove_unreachable_nodes
 from .preprocessing.TRStemmer import TRStemmer
 from .preprocessing import stopwords
 
+
+import jpype, json
+# start JVM if not already started
+if jpype.isJVMStarted():
+    pass
+else:
+    jpype.startJVM("/usr/lib/jvm/java-8-oracle/jre/lib/amd64/server/libjvm.so",
+             "-Djava.class.path=/workspace/zemberek-tum-2.0.jar", "-ea")
+# Türkiye Türkçesine göre çözümlemek için gerekli sınıfı hazırla
+Tr = jpype.JClass("net.zemberek.tr.yapi.TurkiyeTurkcesi")
+# tr nesnesini oluştur
+tr = Tr()
+# Zemberek sınıfını yükle
+Zemberek = jpype.JClass("net.zemberek.erisim.Zemberek")
+# zemberek nesnesini oluştur
+zemberek = Zemberek(tr)
+
 WINDOW_SIZE = 2
 
 """Check tags in http://www.clips.ua.ac.be/pages/mbsp-tags and use only first two letters
@@ -186,6 +203,18 @@ def _format_results(_keywords, combined_keywords, split, scores):
     return "\n".join(combined_keywords)
 
 
+def newstem_single(word):
+    result = zemberek.kelimeCozumle(word)
+    return "{}".format(result[0]).split("Kok: ")[1].split(" ")[0] if result else word
+
+
+def newstem(word):
+    if type(word) == list:
+        return list(map(lambda w: newstem_single(w), word))
+    else:
+        return newstem_single(word)
+
+
 def keywords(text, ratio=0.2, words=None, language="english", split=False, scores=False, deaccent=False):
     if not isinstance(text, str):
         raise ValueError("Text parameter must be a Unicode object (str)!")
@@ -216,9 +245,7 @@ def keywords(text, ratio=0.2, words=None, language="english", split=False, score
     # text.split() to keep numbers and punctuation marks, so separeted concepts are not combined
     combined_keywords = _get_combined_keywords(keywords, text.split())
 
-    stemmer = TRStemmer()
-
-    keywords_unique = set(stemmer.stem(_format_results(keywords, combined_keywords, split, scores).split()))
+    keywords_unique = set(newstem(_format_results(keywords, combined_keywords, split, scores).split()))
     return sorted(list(filter(lambda kw: len(kw) > 1 and kw not in stopwords.turkish.split(), keywords_unique)))
 
 
