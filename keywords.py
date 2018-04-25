@@ -247,7 +247,7 @@ def keywords(text, ratio=0.2, words=None, language="english", split=False, score
     # text.split() to keep numbers and punctuation marks, so separeted concepts are not combined
     combined_keywords = _get_combined_keywords(keywords, text.split())
 
-    keywords_unique = set(stemmer.stem(_format_results(keywords, combined_keywords, split, scores).split()))
+    keywords_unique = set(newstem(_format_results(keywords, combined_keywords, split, scores).split()))
     return sorted(list(filter(lambda kw: len(kw) > 1 and kw not in stopwords.turkish.split(), keywords_unique)))
 
 

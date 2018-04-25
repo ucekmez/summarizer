@@ -3609,7 +3609,11 @@ class TurkishStemmer(_StandardStemmer):
     """
 
     def stem(self, word):
-        SOURCE = open("/workspace/source.txt").read().replace("\n", "")
+        SOURCE = ''
+        try:
+            SOURCE = open("/workspace/source.txt").read().replace("\n", "")
+        except:
+            pass
 
         """
         Stem anTurkish word and return the stemmed form.
