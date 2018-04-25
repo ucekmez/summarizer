@@ -8,7 +8,8 @@ from .commons import build_graph as _build_graph
 from .commons import remove_unreachable_nodes as _remove_unreachable_nodes
 from .preprocessing.TRStemmer import TRStemmer
 from .preprocessing import stopwords
-
+import difflib
+import itertools
 
 import jpype, json
 # start JVM if not already started
@@ -248,7 +249,19 @@ def keywords(text, ratio=0.2, words=None, language="english", split=False, score
     combined_keywords = _get_combined_keywords(keywords, text.split())
 
     keywords_unique = set(newstem(_format_results(keywords, combined_keywords, split, scores).split()))
-    return sorted(list(filter(lambda kw: len(kw) > 1 and kw not in stopwords.turkish.split(), keywords_unique)))
+    keywords_unique = sorted(list(filter(lambda kw: len(kw) > 1 and kw not in stopwords.turkish.split(), keywords_unique)))
+
+    threshold_ratio = 0.75
+
+    for str_1, str_2 in itertools.combinations(keywords_unique, 2):
+        ratio = difflib.SequenceMatcher(None, str_1, str_2).ratio()
+        if (ratio > threshold_ratio):
+            try:
+                keywords_unique.remove(str_2)
+            except:
+                pass
+
+    return keywords_unique
 
 
 def get_graph(text, language="english", deaccent=False):
