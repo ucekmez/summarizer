@@ -10,6 +10,7 @@ from .preprocessing.TRStemmer import TRStemmer
 from .preprocessing import stopwords
 import difflib
 import itertools
+import random
 
 import jpype, json
 # start JVM if not already started
@@ -26,6 +27,7 @@ tr = Tr()
 Zemberek = jpype.JClass("net.zemberek.erisim.Zemberek")
 # zemberek nesnesini oluştur
 zemberek = Zemberek(tr)
+stemmer = TRStemmer()
 
 WINDOW_SIZE = 2
 
@@ -205,8 +207,12 @@ def _format_results(_keywords, combined_keywords, split, scores):
 
 
 def newstem_single(word):
-    result = zemberek.kelimeCozumle(word)
-    return "{}".format(result[0]).split("Kok: ")[1].split(" ")[0] if result else word
+    # using TRStemmer
+    return  stemmer.stem(word)
+
+    # using zemberek
+    #result = zemberek.kelimeCozumle(word)
+    #return "{}".format(result[0]).split("Kok: ")[1].split(" ")[0] if result else word
 
 
 def newstem(word):
@@ -216,7 +222,7 @@ def newstem(word):
         return newstem_single(word)
 
 
-def keywords(text, ratio=0.2, words=None, language="english", split=False, scores=False, deaccent=False):
+def keywords(text, ratio=0.2, words=None, language="turkish", split=False, scores=False, deaccent=False):
     if not isinstance(text, str):
         raise ValueError("Text parameter must be a Unicode object (str)!")
 
@@ -243,15 +249,14 @@ def keywords(text, ratio=0.2, words=None, language="english", split=False, score
     lemmas_to_word = _lemmas_to_words(tokens)
     keywords = _get_keywords_with_score(extracted_lemmas, lemmas_to_word)
 
-    stemmer = TRStemmer()
 
     # text.split() to keep numbers and punctuation marks, so separeted concepts are not combined
     combined_keywords = _get_combined_keywords(keywords, text.split())
 
     keywords_unique = set(newstem(_format_results(keywords, combined_keywords, split, scores).split()))
-    keywords_unique = sorted(list(filter(lambda kw: len(kw) > 1 and kw not in stopwords.turkish.split(), keywords_unique)))
+    keywords_unique = sorted(list(filter(lambda kw: len(kw) > 2 and kw not in stopwords.turkish.split(), keywords_unique)))
 
-    threshold_ratio = 0.75
+    threshold_ratio = 0.65
 
     for str_1, str_2 in itertools.combinations(keywords_unique, 2):
         ratio = difflib.SequenceMatcher(None, str_1, str_2).ratio()
@@ -260,8 +265,9 @@ def keywords(text, ratio=0.2, words=None, language="english", split=False, score
                 keywords_unique.remove(str_2)
             except:
                 pass
-
-    return keywords_unique
+    random.shuffle(keywords_unique)
+    keywords_unique.sort()
+    return keywords_unique[:20]
 
 
 def get_graph(text, language="english", deaccent=False):
